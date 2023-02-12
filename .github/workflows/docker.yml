@@ -5,6 +5,9 @@ on: # yamllint disable-line rule:truthy
   release:
     types: [published]
   workflow_call:
+    secrets:
+      GH_TOKEN:
+        required: true
   # Setup workflow dispatch to allow for manual running for testing
   workflow_dispatch:
 
@@ -28,7 +31,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GH_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
