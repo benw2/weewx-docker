@@ -4,10 +4,11 @@ on: # yamllint disable-line rule:truthy
   # Setup the build to happen when a release is published
   release:
     types: [published]
-  workflow_call:
-    secrets:
-      GH_TOKEN:
-        required: true
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - "**.md"
   # Setup workflow dispatch to allow for manual running for testing
   workflow_dispatch:
 
@@ -18,9 +19,9 @@ env:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-    # permissions:
-    #   contents: read
-    #   packages: write
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout repository
@@ -31,7 +32,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GH_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -46,5 +47,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.GH_TOKEN }}
+
