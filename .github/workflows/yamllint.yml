@@ -12,8 +12,8 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@master
       - name: "🧐 Lint YAML syntax"
-        uses: "docker://python:3-alpine"
+        uses: karancode/yamllint-github-action@master
         with:
-          args: |
-            /bin/sh -c "pip install 'yamllint>=1.28.0';
-            yamllint -f github --no-warnings ."
+          yamllint_strict: false
+          yamllint_comment: false
+
