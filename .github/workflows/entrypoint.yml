@@ -1,0 +1,23 @@
+# Entrypoint for all checks
+name: all-checks
+
+on: # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths-ignore:
+      - "**.md"
+
+  # Allow manual execution of the checks
+  workflow_dispatch:
+
+jobs:
+  yamllint:
+    uses: ./.github/workflows/yamllint.yml
+
+  docker:
+    uses: ./.github/workflows/docker.yml

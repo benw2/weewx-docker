@@ -1,8 +1,10 @@
 name: Create and publish a Docker image
 
 on: # yamllint disable-line rule:truthy
-  push:
-    branches: ['release']
+  # Setup the build to happen when a release is published
+  release:
+    types: [published]
+  workflow_call:
   # Setup workflow dispatch to allow for manual running for testing
   workflow_dispatch:
 
