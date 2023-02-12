@@ -1,0 +1,21 @@
+extends: default
+
+rules:
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+  comments:
+    min-spaces-from-content: 1
+  document-start: disable
+  empty-lines:
+    level: warning
+    max-start: 1
+    max-end: 1
+  line-length: disable
+  new-line-at-end-of-file:
+    level: warning
+  trailing-spaces:
+    level: warning
+  quoted-strings:
+    quote-type: any
+    required: false
