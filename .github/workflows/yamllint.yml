@@ -2,6 +2,8 @@
 name: Yaml Lint
 on: # yamllint disable-line rule:truthy
   workflow_call:
+  # Setup workflow dispatch to allow for manual running for testing
+  workflow_dispatch:
 
 jobs:
   lintAllTheYAMLs:
