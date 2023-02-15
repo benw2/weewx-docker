@@ -1,15 +1,6 @@
 name: Create and publish a Docker image
 
 on: # yamllint disable-line rule:truthy
-  # Setup the build to happen when a release is published
-  # release:
-  #   types: [published]
-  # push:
-  #   branches:
-  #     - "main"
-  #   paths-ignore:
-  #     - "**.md"
-  # Setup workflow dispatch to allow for manual running for testing
   workflow_dispatch:
   workflow_call:
 
@@ -20,6 +11,9 @@ env:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: read
       packages: write
@@ -27,6 +21,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get details for tags
+        shell: bash
+        run: |
+          export BRANCH=${{ github.head_ref || github.ref_name }}
+          echo "BRANCH=${BRANCH}" >> $GITHUB_ENV
+          export GIT_SHA=$(git rev-parse --short origin/${BRANCH})
+          echo "GIT_SHA=${GIT_SHA}" >> $GITHUB_ENV
+          echo "BRANCH: ${BRANCH}  GIT_SHA: ${GIT_SHA}"
 
       - name: Log in to the Container registry
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
@@ -40,12 +45,17 @@ jobs:
         uses: docker/metadata-action@507c2f2dc502c992ad446e3d7a5dfbe311567a96
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=edge,branch=${{ env.BRANCH }}
+            type=ref,event=tag
+            type=semver,pattern={{version}}
+            type=schedule,pattern={{date 'YYYYMMDD' }}
+            type=raw,value=sha-${{ env.GIT_SHA }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
-          context: .
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
