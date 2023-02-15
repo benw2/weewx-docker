@@ -2,15 +2,16 @@ name: Create and publish a Docker image
 
 on: # yamllint disable-line rule:truthy
   # Setup the build to happen when a release is published
-  release:
-    types: [published]
-  push:
-    branches:
-      - "main"
-    paths-ignore:
-      - "**.md"
+  # release:
+  #   types: [published]
+  # push:
+  #   branches:
+  #     - "main"
+  #   paths-ignore:
+  #     - "**.md"
   # Setup workflow dispatch to allow for manual running for testing
   workflow_dispatch:
+  workflow_call:
 
 env:
   REGISTRY: ghcr.io
