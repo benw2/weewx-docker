@@ -21,5 +21,6 @@ jobs:
 
   docker:
     uses: ./.github/workflows/docker.yml
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    secrets: inherit
+    # env:
+    #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
