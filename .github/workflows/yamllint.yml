@@ -15,4 +15,3 @@ jobs:
         uses: karancode/yamllint-github-action@master
         with:
           yamllint_strict: false
-        #  yamllint_comment: false
