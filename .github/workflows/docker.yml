@@ -29,7 +29,7 @@ jobs:
         run: |
           export BRANCH=${{ github.head_ref || github.ref_name }}
           echo "BRANCH=${BRANCH}" >> $GITHUB_ENV
-          export GIT_SHA=$(git rev-parse --short origin/${BRANCH})
+          export GIT_SHA=$(git log -1 --pretty=format:%h)
           echo "GIT_SHA=${GIT_SHA}" >> $GITHUB_ENV
           echo "BRANCH: ${BRANCH}  GIT_SHA: ${GIT_SHA}"
 
