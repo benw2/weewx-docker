@@ -12,6 +12,9 @@ on: # yamllint disable-line rule:truthy
     types: [opened, synchronize, reopened]
     paths-ignore:
       - "**.md"
+  release:
+    types:
+      - created
 
   # Allow manual execution of the checks
   workflow_dispatch:
