@@ -19,7 +19,9 @@ jobs:
   yamllint:
     uses: ./.github/workflows/yamllint.yml
 
-  # docker:
-  #   uses: ./.github/workflows/docker.yml
-  #   secrets:
-  #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  docker:
+    uses: ./.github/workflows/docker.yml
+    needs: yamllint
+    secrets: inherit
+    #  gh_token: ${{ secrets.GITHUB_TOKEN }}
+    #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
