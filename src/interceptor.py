@@ -2367,7 +2367,21 @@ class EcowittClient(Consumer):
             'pm25_ch1': 'pm2_5',
             'pm25batt1': 'pm25_battery',
             'leafwetness_ch1': 'leafwetness_1',
+            'leafwetness_ch2': 'leafwetness_2',
+            'leafwetness_ch3': 'leafwetness_3',
+            'leafwetness_ch4': 'leafwetness_4',
+            'leafwetness_ch5': 'leafwetness_5',
+            'leafwetness_ch6': 'leafwetness_6',
+            'leafwetness_ch7': 'leafwetness_7',
+            'leafwetness_ch8': 'leafwetness_8',
             'leaf_batt1': 'leaf_battery_1',
+            'leaf_batt2': 'leaf_battery_2',
+            'leaf_batt3': 'leaf_battery_3',
+            'leaf_batt4': 'leaf_battery_4',
+            'leaf_batt5': 'leaf_battery_5',
+            'leaf_batt6': 'leaf_battery_6',
+            'leaf_batt7': 'leaf_battery_7',
+            'leaf_batt8': 'leaf_battery_8',
         }
 
         IGNORED_LABELS = [
