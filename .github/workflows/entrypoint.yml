@@ -25,7 +25,6 @@ jobs:
 
   docker:
     uses: ./.github/workflows/docker.yml
+    if: success() && github.ref == 'refs/heads/main'
     needs: yamllint
     secrets: inherit
-    #  gh_token: ${{ secrets.GITHUB_TOKEN }}
-    #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
