@@ -2358,7 +2358,7 @@ class EcowittClient(Consumer):
             'winddir': 'wind_dir',
             'solarradiation': 'solar_radiation',
             'uv': 'uv',
-        #    'totalrainin': 'rain_total',
+            'totalrainin': 'rain_total',
             'rainratein': 'rain_rate',
             'wh25batt': 'wh25_battery',
             'wh26batt': 'wh26_battery',
@@ -2389,7 +2389,7 @@ class EcowittClient(Consumer):
             'maxdailygust', 'eventrainin', 'hourlyrainin', 'dailyrainin',
             'weeklyrainin', 'monthlyrainin', 'yearlyrainin',
             'pm25_avg_24h_ch1', 'winddir_avg10m', 'windspdmph_avg10m',
-            'runtime', 'totalrainin'
+            'runtime'
         ]
 
         def __init__(self):
