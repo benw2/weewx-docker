@@ -1,4 +1,4 @@
-FROM alpine:3.17.2
+FROM alpine:3.17.3
 
 # Set WeeWX version to install (see http://weewx.com/downloads/)
 ARG WEEWX=4.10.1
