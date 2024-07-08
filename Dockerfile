@@ -1,4 +1,4 @@
-FROM alpine:3.19.0
+FROM alpine:3.20.1
 
 # Set WeeWX version to install 
 # http://weewx.com/downloads/ or https://github.com/weewx/weewx/releases
