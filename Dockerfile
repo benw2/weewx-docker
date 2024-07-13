@@ -59,4 +59,4 @@ RUN if [ ! -z "${INSTALL_PLUGINS}" ]; then \
 COPY src/interceptor.py /home/weewx/bin/user
 
 VOLUME ["/data"]
-CMD ["--config", "/home/weewx/weewx.conf"]
+CMD ["--config", "/data/weewx.conf"]
