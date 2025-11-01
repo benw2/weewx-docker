@@ -8,7 +8,7 @@ ARG WEEWX_VERSION=5.2.0
 ARG INSTALL_PLUGINS="\
   https://github.com/matthewwall/weewx-mqtt/archive/master.zip,\
   https://github.com/matthewwall/weewx-interceptor/archive/master.zip,\
-  https://github.com/gjr80/weewx-gw1000/releases/latest/download/gw1000.zip"
+  https://github.com/bidord/weewx-gw1000/releases/latest/download/gw1000.zip"
 
 ENTRYPOINT ["/usr/bin/weewxd"]
 WORKDIR /home/weewx
