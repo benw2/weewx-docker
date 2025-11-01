@@ -2,13 +2,13 @@ FROM alpine:3.20.3
 
 # Set WeeWX version to install 
 # http://weewx.com/downloads/ or https://github.com/weewx/weewx/releases
-ARG WEEWX_VERSION=5.0.2
+ARG WEEWX_VERSION=5.2.0
 
 # Comma-separated list of plugins (URLs) to install
 ARG INSTALL_PLUGINS="\
   https://github.com/matthewwall/weewx-mqtt/archive/master.zip,\
   https://github.com/matthewwall/weewx-interceptor/archive/master.zip,\
-  https://github.com/gjr80/weewx-gw1000/releases/latest/download/gw1000.zip"
+  https://github.com/bidord/weewx-gw1000/releases/latest/download/gw1000.zip"
 
 ENTRYPOINT ["/usr/bin/weewxd"]
 WORKDIR /home/weewx
